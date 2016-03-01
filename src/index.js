@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-const json = require("crystalize-response-json").json;
+const sendJson = require("crystalize-response-send-json").sendJson;
 const send = require("crystalize-response-send").send;
 const sendStatus = require("crystalize-response-send-status").sendStatus;
 
@@ -27,7 +27,7 @@ module.exports = {
     name: "express-methods",
     respondsTo: "then",
     callback: (req, res) => Object.assign(res, {
-        json: (object) => json(res, object),
+        json: (object) => sendJson(res, object),
         send: (string) => send(res, string),
         sendStatus: (code) => sendStatus(res, code),
     }),
